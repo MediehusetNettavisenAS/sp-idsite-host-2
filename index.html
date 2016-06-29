@@ -22,51 +22,51 @@
         <div class="box row">
           <div class="email-password-area  col-xs-12" ng-class="[hasProviders ? 'small col-sm-8' : 'large col-sm-12']">
             <div class="header">
-              <span>Log In</span>
-              <span ng-show="canRegister" wd-can-register>
-                <span> or </span>
-                <a href="#register">Create an Account</a>
-              </span>
-
+              <span>Logg inn</span>
             </div>
+
+            <p>For å bruke denne tjenesten må du registrere en Nettavisen-bruker eller logge inn med din eksisterende bruker.
+              <span ng-click="showInfo = !showInfo;">Hva er Nettavisen-ID?</span>
+            </p>
+
             <div class="alert alert-danger bad-login" ng-show="errors.badLogin">
-              Invalid username or password.
+              Feil brukernavn eller passord.
             </div>
             <div class="alert alert-danger not-found" ng-show="errors.notFound">
-              <span>Account does not exist. Do you need to </span>
-              <a href="#/register">create an account</a>
+              <span>Kontoen eksisterer ikke. ønsker du å </span>
+              <a href="#/register">opprette en konto?</a>
               <span>?</span>
             </div>
-            <div class="alert alert-danger" ng-show="errors.unknown">An unkown error has occurred</div>
-            <div class="alert alert-danger" ng-show="errors.emailPasswordRequired">Please enter your email and password.</div>
+            <div class="alert alert-danger" ng-show="errors.unknown">En ukjent feil har oppstått</div>
+            <div class="alert alert-danger" ng-show="errors.emailPasswordRequired">Vennligst skriv inn e-postadresse og passord</div>
             <div class="alert alert-danger" ng-show="errors.userMessage">
-              <strong>Sorry, an error occured.  Please return to the previous page and try again.</strong>
+              <strong>Beklager, men en feil har oppstått. Vennligst last siden på nytt.</strong>
               <br/>
               <br/>
               <p>{{errors.userMessage}}</p>
             </div>
             <form class="login-form form-horizontal" role="form" ng-submit="submit()">
               <div class="form-group group-email" ng-show="showOrganizationField" ng-class="{'has-error': (errors.organizationNameKeyInvalid || errors.organizationNameKeyRequired)}">
-                <label ng-class="[hasProviders ? 'col-sm-12' : 'col-sm-4']">Organization</label>
+                <label ng-class="[hasProviders ? 'col-sm-12' : 'col-sm-4']">Organisasjon</label>
                 <div ng-class="[hasProviders ? 'col-sm-12' : 'col-sm-8']">
                   <input class="form-control" type="text" name="organizationNameKey" ng-model="organizationNameKey" placeholder="Organization" ng-disabled="disableOrganizationField"/>
 
                   <span ng-if="errors.organizationNameKeyRequired" class="help-block">
-                    An organization name is required.
+                    Organisasjonsnavn er påkrevd.
                   </span>
                   <span ng-if="errors.organizationNameKeyInvalid" class="help-block">
-                    Invalid Organization Name.
+                    Ugyldig organisasjonsnavn.
                   </span>
                 </div>
               </div>
               <div class="form-group group-email">
-                <label ng-class="[hasProviders ? 'col-sm-12' : 'col-sm-4']">Email</label>
+                <label ng-class="[hasProviders ? 'col-sm-12' : 'col-sm-4']">E-post</label>
                 <div ng-class="[hasProviders ? 'col-sm-12' : 'col-sm-8']">
                   <input class="form-control" type="text" name="username" ng-model="username" placeholder="Email"/>
                 </div>
               </div>
               <div class="form-group group-password">
-                <label ng-class="[hasProviders ? 'col-sm-12' : 'col-sm-4']">Password</label>
+                <label ng-class="[hasProviders ? 'col-sm-12' : 'col-sm-4']">Passord</label>
                 <div ng-class="[hasProviders ? 'col-sm-12' : 'col-sm-8']">
                   <input class="form-control" type="password" name="password" ng-model="password" placeholder="Password"/>
                 </div>
@@ -74,24 +74,31 @@
               <div class="form-group group-remember-me">
                 <div class="col-sm-8" ng-class="[hasProviders ? '' : 'col-sm-offset-4']">
                   <input type="checkbox" id="remember">
-                  <label for="remember">Remember me</label>
+                  <label for="remember">Husk meg</label>
+                  <a class="forgot" href="#forgot">Glemt passord? Trykk her</a>
                 </div>
               </div>
               <div>
-                <button class="login btn btn-login btn-sp-green" type="submit" ng-disabled="submitting">Log In</button>
+                <button class="login btn btn-login btn-sp-green" type="submit" ng-disabled="submitting">Logg inn</button>
               </div>
             </form>
           </div>
 
+            <div class="header">
+              <span>Opprett ny bruker</span>
+
+            </div>
+
           <div class="provider-area  col-xs-12 col-sm-4" ng-show="hasProviders">
             <div class="header">&nbsp;</div>
-            <label>Easy 1-click login:</label>
-            <button ng-repeat="provider in providers" class="btn btn-social btn-{{provider.providerId}}" ng-click="providerLogin(provider)">{{provider.accountStore ? provider.accountStore.name : provider.providerId}}</button>
+            <a href="#register" class="btn btn-social button-na other">Registrer din personlige Nettavisen-ID</a>
+            <label>Logg inn med ett klikk!</label>
+
+            <button ng-repeat="provider in providers" class="btn btn-social btn-{{provider.providerId}}" ng-click="providerLogin(provider)">Logg inn med din {{provider.accountStore ? provider.accountStore.name : provider.providerId}}</button>
           </div>
 
         </div>
 
-        <a class="forgot" href="#forgot">Forgot Password?</a>
 
       </div>
 

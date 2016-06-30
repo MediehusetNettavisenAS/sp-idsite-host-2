@@ -25,7 +25,7 @@
         <div class="box row">
           <div class="email-password-area  col-xs-12" ng-class="[hasProviders ? 'small col-sm-8' : 'large col-sm-12']">
             <div class="header">
-              <span>eller via e-post</span>
+              <span>eller med e-post</span>
             </div>
             <div class="alert alert-danger bad-login" ng-show="errors.badLogin">
               Feil brukernavn eller passord.
@@ -88,8 +88,10 @@
          <div class="box row">
           <div class="email-password-area  col-xs-12" ng-class="[hasProviders ? 'small col-sm-8' : 'large col-sm-12']">
             <p>For å bruke denne tjenesten må du opprette en Nettavisen-bruker eller logge inn med din eksisterende bruker.
-              <span ng-click="showInfo = !showInfo;">Hva er Nettavisen-ID?</span>
+              <a href="#" ng-click="showInfo = !showInfo;">Hva er Nettavisen-ID?</a>
             </p>
+            <p ng-show="showInfo">Din bruker på Nettavisen gir deg mulighet til å logge inn på tjenester hos Nettavisen som kommentarfelt og nyhetsbrev. Brukeren din er personlig, og dine data beskyttes av vår datapolicy (<a href="http://www.nettavisen.no/datapolicy.html">http://www.nettavisen.no/datapolicy.html</a>).
+      Hvis du ønsker å slette din bruker kan du når som helst gjøre det. Nettavisen vil aldri selge dine innloggingsdata.</p>
           </div>
         </div>
 

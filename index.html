@@ -20,18 +20,13 @@
     <script type="text/ng-template" id="views/login.html">
       <div class="view login-view" ng-show="ready">
         <div class="provider-area  col-xs-12 col-sm-4" ng-show="hasProviders">
-          <button ng-repeat="provider in providers" class="btn btn-social btn-{{provider.providerId}}" ng-click="providerLogin(provider)">Logg inn ett klikk!</button>
+          <button ng-repeat="provider in providers" class="btn btn-social btn-{{provider.providerId}}" ng-click="providerLogin(provider)">Logg inn med ett klikk!</button>
         </div>
         <div class="box row">
           <div class="email-password-area  col-xs-12" ng-class="[hasProviders ? 'small col-sm-8' : 'large col-sm-12']">
             <div class="header">
               <span>Eller via e-post</span>
             </div>
-
-            <p>For å bruke denne tjenesten må du opprette en Nettavisen-bruker eller logge inn med din eksisterende bruker.
-              <span ng-click="showInfo = !showInfo;">Hva er Nettavisen-ID?</span>
-            </p>
-
             <div class="alert alert-danger bad-login" ng-show="errors.badLogin">
               Feil brukernavn eller passord.
             </div>
@@ -83,7 +78,7 @@
               </div>
               <div>
                 <button class="login btn btn-login btn-sp-green" type="submit" ng-disabled="submitting">Logg inn</button>
-                <a href="#register" class="login btn btn-login btn-sp-green inverse" type="submit" ng-disabled="submitting">Opprett konto</button>
+                <a href="#register" class="login btn btn-login btn-sp-green inverse" type="submit" ng-disabled="submitting">Opprett konto</a>
               </div>
             </form>
           </div>    

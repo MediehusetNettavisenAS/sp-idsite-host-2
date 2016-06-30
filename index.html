@@ -19,13 +19,16 @@
   <body ng-app="stormpathIdpApp">
     <script type="text/ng-template" id="views/login.html">
       <div class="view login-view" ng-show="ready">
+        <div class="provider-area  col-xs-12 col-sm-4" ng-show="hasProviders">
+          <button ng-repeat="provider in providers" class="btn btn-social btn-{{provider.providerId}}" ng-click="providerLogin(provider)">Logg inn ett klikk!</button>
+        </div>
         <div class="box row">
           <div class="email-password-area  col-xs-12" ng-class="[hasProviders ? 'small col-sm-8' : 'large col-sm-12']">
             <div class="header">
-              <span>Logg inn</span>
+              <span>Eller via e-post</span>
             </div>
 
-            <p>For å bruke denne tjenesten må du registrere en Nettavisen-bruker eller logge inn med din eksisterende bruker.
+            <p>For å bruke denne tjenesten må du opprette en Nettavisen-bruker eller logge inn med din eksisterende bruker.
               <span ng-click="showInfo = !showInfo;">Hva er Nettavisen-ID?</span>
             </p>
 
@@ -80,25 +83,20 @@
               </div>
               <div>
                 <button class="login btn btn-login btn-sp-green" type="submit" ng-disabled="submitting">Logg inn</button>
+                <a href="#register" class="login btn btn-login btn-sp-green inverse" type="submit" ng-disabled="submitting">Opprett konto</button>
               </div>
             </form>
-          </div>
-
-            <div class="header">
-              <span>Opprett ny bruker</span>
-
-            </div>
-
-          <div class="provider-area  col-xs-12 col-sm-4" ng-show="hasProviders">
-            <div class="header">&nbsp;</div>
-            <a href="#register" class="btn btn-social button-na other">Registrer din personlige Nettavisen-ID</a>
-            <label>Logg inn med ett klikk!</label>
-
-            <button ng-repeat="provider in providers" class="btn btn-social btn-{{provider.providerId}}" ng-click="providerLogin(provider)">Logg inn med din {{provider.accountStore ? provider.accountStore.name : provider.providerId}}</button>
-          </div>
+          </div>    
 
         </div>
 
+         <div class="box row">
+          <div class="email-password-area  col-xs-12" ng-class="[hasProviders ? 'small col-sm-8' : 'large col-sm-12']">
+            <p>For å bruke denne tjenesten må du opprette en Nettavisen-bruker eller logge inn med din eksisterende bruker.
+              <span ng-click="showInfo = !showInfo;">Hva er Nettavisen-ID?</span>
+            </p>
+          </div>
+        </div>
 
       </div>
 
